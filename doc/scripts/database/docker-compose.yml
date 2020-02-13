@@ -1,0 +1,12 @@
+version: '3.1'
+
+services:
+  carshop-db:
+    container_name: carshop-db-standalone
+    restart: always
+    image: carshop-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5440:5432"

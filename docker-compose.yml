@@ -1,0 +1,32 @@
+version: '3.7'
+
+services:
+  berthad-db:
+    image: carshop-db
+    container_name: carshop-db
+    ports:
+      - "5440:5432"
+  berthad-server:
+    image: eduardotrzan/carshop-server:latest
+    build: .
+    container_name: carshop-server
+    depends_on:
+      - carshop-db
+    ports:
+      - "127.0.0.1:8484:8484"
+    volumes:
+      - ~/Dev/Docker/logs/carshop:/opt/carshop/server/logs
+    environment:
+      # Spring running profile
+      - springProfile=docker
+
+      # Application running port
+      - serverPort=8484
+
+      # DB configuration
+      - databaseUrl=jdbc:postgresql://berthad-db:5432/carshop
+      - databaseUsername=carshop
+      - databasePassword=carshop
+
+      # JPA sql logging
+      - jpaShowSql=true
