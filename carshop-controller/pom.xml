@@ -11,5 +11,16 @@
 
     <artifactId>carshop-controller</artifactId>
 
+    <dependencies>
+        <!-- CarShop Modules -->
+        <dependency>
+            <groupId>com.carshop</groupId>
+            <artifactId>carshop-dto</artifactId>
+        </dependency>
 
+        <dependency>
+            <groupId>com.carshop</groupId>
+            <artifactId>carshop-service</artifactId>
+        </dependency>
+    </dependencies>
 </project>

@@ -3,6 +3,7 @@ package com.carshop.service.business;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -11,6 +12,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.carshop.domain.entity.Garage;
+import com.carshop.domain.entity.enums.GarageStatus;
 import com.carshop.domain.repo.GarageRepository;
 
 @RequiredArgsConstructor
@@ -28,6 +30,11 @@ public class GarageService {
     @Transactional(readOnly = true, propagation = Propagation.MANDATORY)
     public Optional<Garage> findByUuid(UUID garageUuid) {
         return this.garageRepository.findByUuid(garageUuid);
+    }
+
+    @Transactional(readOnly = true, propagation = Propagation.MANDATORY)
+    public List<Garage> findAllByStatus(GarageStatus garageStatus) {
+        return this.garageRepository.findAllByStatus(garageStatus);
     }
 
 }

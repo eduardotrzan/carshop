@@ -13,6 +13,7 @@ import com.carshop.dto.request.CarCreateDto;
 import com.carshop.dto.response.CarDto;
 import com.carshop.service.business.CarService;
 import com.carshop.service.mapper.CarMapper;
+import com.carshop.service.validation.NotFoundException;
 
 @RequiredArgsConstructor
 @Component
@@ -29,7 +30,7 @@ public class CarMediator {
 
         return this.carMapper
                 .toDto(savedEntity)
-                .orElseThrow();
+                .orElseThrow(() -> new NotFoundException(Car.class.getSimpleName()));
     }
 
     @Transactional(readOnly = true)

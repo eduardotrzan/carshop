@@ -7,9 +7,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Positive;
+import java.time.OffsetDateTime;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -18,19 +18,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString(of = { "make", "model", "year" })
+@ToString(of = { "scheduleDate" })
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class CarCreateDto {
+public class AppointmentCreateDto {
 
     @NotNull
-    @NotBlank
-    private String make;
-
-    @NotNull
-    @NotBlank
-    private String model;
-
-    @NotNull
-    @Positive
-    private Integer year;
+    @FutureOrPresent
+    private OffsetDateTime scheduleDate;
 }
