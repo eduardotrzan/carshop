@@ -45,7 +45,7 @@ END;
 
 CREATE TABLE "garage" (
     "id"                         BIGINT DEFAULT nextval('garage_id_seq' :: REGCLASS) NOT NULL,
-    "uuid"                        UUID                                                        NOT NULL DEFAULT uuid_generate_v4(),
+    "uuid"                       UUID                                                NOT NULL DEFAULT uuid_generate_v4(),
     "status"                     VARCHAR(70)                                         NOT NULL DEFAULT 'FREE', -- FREE, OCCUPIED
     "door"                       BIGINT                                              NOT NULL,
 
@@ -96,3 +96,38 @@ CREATE INDEX "appointment_idx02"
 
 CREATE INDEX "appointment_idx03"
     ON "appointment" ("garage_id");
+
+
+------------------------------------------------------------------------------------------------------------------------
+
+
+CREATE SEQUENCE service_id_seq
+    INCREMENT 1
+    MINVALUE 1
+    MAXVALUE 9223372036854775807
+    START 1
+    CACHE 1;
+END;
+
+CREATE TABLE "service" (
+    "id"                          BIGINT DEFAULT nextval('service_id_seq' :: REGCLASS) NOT NULL,
+    "uuid"                        UUID                                                        NOT NULL DEFAULT uuid_generate_v4(),
+    "create_date"                 TIMESTAMP WITH TIME ZONE                                    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "update_date"                 TIMESTAMP WITH TIME ZONE                                    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "version"                     BIGINT                                                      NOT NULL,
+    "appointment_id"              BIGINT                                                      NOT NULL,
+    "type"                        VARCHAR(200)                                                NOT NULL, -- CHECK_TIRES, CLEAN_VEHICLE, CHANGE_OIL
+    "status"                      VARCHAR(70)                                                 NOT NULL DEFAULT 'PENDING', -- PENDING, DONE, CANCELLED
+
+    PRIMARY KEY ("id")
+);
+END;
+
+CREATE UNIQUE INDEX "service_idx01"
+    ON "service" ("uuid");
+
+CREATE INDEX "service_idx02"
+    ON "service" ("appointment_id");
+
+CREATE INDEX "service_idx03"
+    ON "service" ("status");

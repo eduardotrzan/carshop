@@ -5,6 +5,18 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet author="eduardotrzan"
+               id="SER-001-Pre.config.db"
+               logicalFilePath="liquibase/changelog/SER-001-Pre.config.db.changelog.sql">
+        <sqlFile
+                encoding="utf8"
+                path="liquibase/changelog/SER-001-Pre.config.db.changelog.sql"
+                splitStatements="true"
+                stripComments="true"
+        />
+    </changeSet>
+
     <include file="carshop/liquibase/db.changelog-master.xml" />
-    <include file="liquibase/changelog/SER-001-Initial.garage.setup.changelog.xml" />
+    <include file="liquibase/changelog/SER-002-Initial.garage.setup.changelog.xml" />
 </databaseChangeLog>
