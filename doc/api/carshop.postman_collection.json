@@ -1,0 +1,327 @@
+{
+	"info": {
+		"_postman_id": "be71e832-7338-4db9-9a5c-9ed383643a14",
+		"name": "carshop",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "car",
+			"item": [
+				{
+					"name": "Valid Calls",
+					"item": [
+						{
+							"name": "Create Car",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "0c60bc2c-52c4-4fdb-9255-a924d8688b53",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"postman.setEnvironmentVariable(\"carUuid\", jsonData.uuid);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"make\": \"Honda\",\n\t\"model\": \"Civic\",\n\t\"year\": 2018\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/carshop/v1/cars",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"carshop",
+										"v1",
+										"cars"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Car With Unknow Fields",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"make\": \"Toyota\",\n\t\"model\": \"Corolla\",\n\t\"year\": 2019,\n\t\"trim\": \"Elite\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/carshop/v1/cars",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"carshop",
+										"v1",
+										"cars"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Invalid Calls",
+					"item": [
+						{
+							"name": "Create Car - Null Make",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"model\": \"Civic\",\n\t\"year\": 2018\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/carshop/v1/cars",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"carshop",
+										"v1",
+										"cars"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Car - Negative Year",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"make\": \"Honda\",\n\t\"model\": \"Civic\",\n\t\"year\": -1\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/carshop/v1/cars",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"carshop",
+										"v1",
+										"cars"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "appointment",
+			"item": [
+				{
+					"name": "Valid Calls",
+					"item": [
+						{
+							"name": "Create an Appointment for a Car",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "5c464ccd-0193-4b42-a920-dbb49f9ebb74",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"postman.setEnvironmentVariable(\"appointmentUuid\", jsonData.uuid);"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "676483dd-496f-40e7-817a-90de8ba377df",
+										"exec": [
+											"var scheduleDate = new Date();",
+											"scheduleDate.setDate(scheduleDate.getDate() + 1); // days",
+											"postman.setEnvironmentVariable(\"scheduleDate\", scheduleDate.toISOString());"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"scheduleDate\": \"{{scheduleDate}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/carshop/v1/cars/{{carUuid}}/appointments",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"carshop",
+										"v1",
+										"cars",
+										"{{carUuid}}",
+										"appointments"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Invalid Calls",
+					"item": [
+						{
+							"name": "Create an Appointment for a Car - Schedule date in the past",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "5c464ccd-0193-4b42-a920-dbb49f9ebb74",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"postman.setEnvironmentVariable(\"appointmentUuid\", jsonData.uuid);"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "676483dd-496f-40e7-817a-90de8ba377df",
+										"exec": [
+											"var scheduleDate = new Date();",
+											"scheduleDate.setDate(scheduleDate.getDate() - 1); // days",
+											"postman.setEnvironmentVariable(\"scheduleDate\", scheduleDate.toISOString());"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"scheduleDate\": \"{{scheduleDate}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/carshop/v1/cars/{{carUuid}}/appointments",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"carshop",
+										"v1",
+										"cars",
+										"{{carUuid}}",
+										"appointments"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

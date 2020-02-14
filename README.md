@@ -83,8 +83,8 @@ docker exec -ti carshop-server /bin/bash
 
 ## Using the Application
 - Download [Postman](https://www.getpostman.com/);
-- Import Postman collections from `~/doc/api/RES-DOC-ApiCalls.postman_collection.json`;
-- Configure your hostname for where the service is running;
+- Import Postman collections from `~/doc/api/carshop.postman_collection.json`;
+- Import Postman environment from `~/doc/api/CarShop.postman_environment.json`;
 - Use the Valid and Invalid calls to use the system.
 
 ## Testing the system

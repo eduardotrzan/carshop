@@ -27,6 +27,11 @@ public class GarageService {
         return this.garageRepository.save(entity);
     }
 
+    @Transactional(propagation = Propagation.MANDATORY)
+    public Garage update(Garage entity) {
+        return this.garageRepository.save(entity);
+    }
+
     @Transactional(readOnly = true, propagation = Propagation.MANDATORY)
     public Optional<Garage> findByUuid(UUID garageUuid) {
         return this.garageRepository.findByUuid(garageUuid);

@@ -46,6 +46,9 @@ public class AppointmentMediator {
 
         Appointment savedEntity = this.appointmentService.create(entity);
 
+        garage.setStatus(GarageStatus.OCCUPIED);
+        this.garageService.update(garage);
+
         return this.appointmentMapper
                 .toDto(savedEntity)
                 .orElseThrow(() -> new InternalServerException("Mapper error"));

@@ -9,31 +9,38 @@
 
     <changeSet author="eduardotrzan" id="SER-001-Initial.garage.setup">
         <insert tableName="garage">
-            <column name="door" value="1"/>
+            <column name="door" value="1" />
+            <column name="version" value="1" />
         </insert>
 
         <insert tableName="garage">
-            <column name="door" value="2"/>
+            <column name="door" value="2" />
+            <column name="version" value="1" />
         </insert>
 
         <insert tableName="garage">
-            <column name="door" value="3"/>
+            <column name="door" value="3" />
+            <column name="version" value="1" />
         </insert>
 
         <insert tableName="garage">
-            <column name="door" value="4"/>
+            <column name="door" value="4" />
+            <column name="version" value="1" />
         </insert>
 
         <insert tableName="garage">
-            <column name="door" value="5"/>
+            <column name="door" value="5" />
+            <column name="version" value="1" />
         </insert>
 
         <insert tableName="garage">
-            <column name="door" value="6"/>
+            <column name="door" value="6" />
+            <column name="version" value="1" />
         </insert>
 
         <insert tableName="garage">
-            <column name="door" value="7"/>
+            <column name="door" value="7" />
+            <column name="version" value="1" />
         </insert>
 
         <rollback>

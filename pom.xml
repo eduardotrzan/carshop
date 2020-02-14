@@ -213,6 +213,24 @@
                 <groupId>com.carshop</groupId>
                 <artifactId>carshop-service</artifactId>
                 <version>${carshop-service.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>com.carshop</groupId>
+                        <artifactId>carshop-domain</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <dependency>
+                <groupId>com.carshop</groupId>
+                <artifactId>carshop-contoller</artifactId>
+                <version>${carshop-contoller.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>com.carshop</groupId>
+                        <artifactId>carshop-service</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
 
             <!-- Spring Boot -->

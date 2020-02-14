@@ -46,6 +46,9 @@ END;
 CREATE TABLE "garage" (
     "id"                         BIGINT DEFAULT nextval('garage_id_seq' :: REGCLASS) NOT NULL,
     "uuid"                       UUID                                                NOT NULL DEFAULT uuid_generate_v4(),
+    "create_date"                TIMESTAMP WITH TIME ZONE                            NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "update_date"                TIMESTAMP WITH TIME ZONE                            NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "version"                    BIGINT                                              NOT NULL,
     "status"                     VARCHAR(70)                                         NOT NULL DEFAULT 'FREE', -- FREE, OCCUPIED
     "door"                       BIGINT                                              NOT NULL,
 

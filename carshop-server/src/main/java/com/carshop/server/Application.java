@@ -12,6 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Import;
 
+import com.carshop.controller.config.CarshopControllerConfig;
 import com.carshop.server.config.ApplicationConfig;
 
 @Slf4j
@@ -23,7 +24,7 @@ import com.carshop.server.config.ApplicationConfig;
 //                SwaggerConfig.class,
 
                 // Controller Modules
-//                CarshopControllerConfig.class
+                CarshopControllerConfig.class
 
         })
 @SpringBootApplication
