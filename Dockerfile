@@ -2,7 +2,7 @@ FROM openjdk:13-jdk-alpine3.10
 
 RUN apk add --no-cache bash
 
-COPY server/target/server-1.0-SNAPSHOT.jar /opt/carshop/server/server.jar
+COPY carshop-server/target/carshop-server-1.0-SNAPSHOT.jar /opt/carshop/server/server.jar
 COPY start.sh /opt/carshop/server/start.sh
 
 RUN chmod -R o+x /opt/carshop/server/ && chmod 777 /opt/carshop/server/

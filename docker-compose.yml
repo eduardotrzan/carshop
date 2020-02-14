@@ -1,12 +1,12 @@
 version: '3.7'
 
 services:
-  berthad-db:
+  carshop-db:
     image: carshop-db
     container_name: carshop-db
     ports:
       - "5440:5432"
-  berthad-server:
+  carshop-server:
     image: eduardotrzan/carshop-server:latest
     build: .
     container_name: carshop-server
@@ -24,7 +24,7 @@ services:
       - serverPort=8484
 
       # DB configuration
-      - databaseUrl=jdbc:postgresql://berthad-db:5432/carshop
+      - databaseUrl=jdbc:postgresql://carshop-db:5432/carshop
       - databaseUsername=carshop
       - databasePassword=carshop
 

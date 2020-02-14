@@ -27,6 +27,7 @@ CREATE USER carshop WITH PASSWORD 'carshop';
 ##### Grant Permissions
 Run in SQL
 ```sql
+ALTER USER carshop WITH SUPERUSER;
 ALTER DATABASE carshop OWNER TO carshop;
 GRANT ALL PRIVILEGES ON DATABASE carshop TO carshop;
 GRANT ALL PRIVILEGES ON SCHEMA public TO carshop;
@@ -108,3 +109,11 @@ In the same server folder run:
 #### Running carshop with Maven
 In the server folder run:
 - `mvn clean spring-boot:run -Dspring-boot.run.profiles=local`
+
+
+### Tips
+#### Lazy Docker version
+Navigate to root folder first (i.e. **< path >/carshop**).
+
+Run compact docker command on terminal: 
+- ` cd doc/scripts/database && docker image build -t carshop-db . && cd ../../../ && mvn-skip&& docker image build -t carshop-server . && docker-compose up` 
