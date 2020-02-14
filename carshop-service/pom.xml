@@ -11,5 +11,16 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>carshop-service</artifactId>
 
+    <dependencies>
+        <!-- CarShop -->
+        <dependency>
+            <groupId>com.carshop</groupId>
+            <artifactId>carshop-domain</artifactId>
+        </dependency>
 
+        <dependency>
+            <groupId>com.carshop</groupId>
+            <artifactId>carshop-dto</artifactId>
+        </dependency>
+    </dependencies>
 </project>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd"
+        logicalFilePath="liquibase/changelog/SER-001-Initial.garage.setup.changelog.xml">
+
+    <changeSet author="eduardotrzan" id="SER-001-Initial.garage.setup">
+        <insert tableName="garage">
+            <column name="door" value="1"/>
+        </insert>
+
+        <insert tableName="garage">
+            <column name="door" value="2"/>
+        </insert>
+
+        <insert tableName="garage">
+            <column name="door" value="3"/>
+        </insert>
+
+        <insert tableName="garage">
+            <column name="door" value="4"/>
+        </insert>
+
+        <insert tableName="garage">
+            <column name="door" value="5"/>
+        </insert>
+
+        <insert tableName="garage">
+            <column name="door" value="6"/>
+        </insert>
+
+        <insert tableName="garage">
+            <column name="door" value="7"/>
+        </insert>
+
+        <rollback>
+            <delete tableName="subscription">
+                <where>door IN (1, 2, 3, 4, 5, 6, 7)</where>
+            </delete>
+        </rollback>
+    </changeSet>
+</databaseChangeLog>

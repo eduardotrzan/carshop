@@ -203,6 +203,18 @@
                 <version>${carshop-domain.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>com.carshop</groupId>
+                <artifactId>carshop-dto</artifactId>
+                <version>${carshop-dto.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.carshop</groupId>
+                <artifactId>carshop-service</artifactId>
+                <version>${carshop-service.version}</version>
+            </dependency>
+
             <!-- Spring Boot -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
