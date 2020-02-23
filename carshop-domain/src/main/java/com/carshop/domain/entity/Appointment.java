@@ -15,9 +15,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import java.time.OffsetDateTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -45,4 +47,7 @@ public class Appointment extends AbstractEntity<Long> {
     @ManyToOne(targetEntity = Garage.class, fetch = FetchType.LAZY)
     @JoinColumn(name = "garage_id", nullable = false)
     private Garage garage;
+
+    @OneToMany(mappedBy = "appointment", fetch = FetchType.LAZY)
+    private List<Service> services;
 }

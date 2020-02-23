@@ -52,7 +52,6 @@ public class AppointmentController {
             @ApiResponse(code = 401, message = "You are not authorized to view the Appointment."),
             @ApiResponse(code = 404, message = "The Appointment you were trying to reach is NOT FOUND.")
     })
-    @PermitAll
     @PreAuthorize("@appointmentAuthEvaluator.canFind(#appointmentUuid)")
     @GetMapping(value = "/appointments/{appointmentUuid}", produces = "application/json")
     public AppointmentDto findComment(@PathVariable(value = "appointmentUuid") UUID appointmentUuid) {
