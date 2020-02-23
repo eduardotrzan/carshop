@@ -61,3 +61,7 @@
 - Crie um evento que quando todos os servicos de uma marcação forem finalizados, a marcação é dada como finalizada e calcule o valor total da marcação. Atividade deve ser feita usando uma named query.
 - Crie um endpoint que retorne o relatório do serviço feito
 - Adicione ao novo endpoint uma documentação Swagger
+
+#### Evento
+- Altere o evento simples usando Spring para evento assíncrono usando `ThreadPoolTaskExecutor`
+- Altere o evento simples ou multi-thread para eventos usando Kafka com https://spring.io/projects/spring-kafka
