@@ -1,5 +1,9 @@
 package com.carshop.controller;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import lombok.RequiredArgsConstructor;
 
 import javax.annotation.security.PermitAll;
@@ -21,6 +25,7 @@ import com.carshop.dto.response.AppointmentDto;
 import com.carshop.service.aggregator.AppointmentMediator;
 import com.carshop.service.validation.NotFoundException;
 
+@Api(value = "Appointment Management")
 @RestController
 @RequestMapping({ "/v1" })
 @RequiredArgsConstructor
@@ -28,6 +33,11 @@ public class AppointmentController {
 
     private final AppointmentMediator appointmentMediator;
 
+    @ApiOperation(value = "Creates an Appointment for a Car base on uuid.", response = AppointmentDto.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 201, message = "Successfully create an Appointment"),
+            @ApiResponse(code = 401, message = "You are not authorized to create an Appointment.")
+    })
     @PreAuthorize("@appointmentAuthEvaluator.canCreate(#carUuid)")
     @PostMapping(value = "/cars/{carUuid}/appointments", consumes = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
@@ -36,7 +46,14 @@ public class AppointmentController {
         return this.appointmentMediator.create(carUuid, request);
     }
 
+    @ApiOperation(value = "Retrieves an Appointment by its UUID.", response = AppointmentDto.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Successfully retrieves an Appointment."),
+            @ApiResponse(code = 401, message = "You are not authorized to view the Appointment."),
+            @ApiResponse(code = 404, message = "The Appointment you were trying to reach is NOT FOUND.")
+    })
     @PermitAll
+    @PreAuthorize("@appointmentAuthEvaluator.canFind(#appointmentUuid)")
     @GetMapping(value = "/appointments/{appointmentUuid}", produces = "application/json")
     public AppointmentDto findComment(@PathVariable(value = "appointmentUuid") UUID appointmentUuid) {
         return this.appointmentMediator.findByUuid(appointmentUuid)

@@ -144,3 +144,6 @@ Note: if you don't wanna loose some image, don't run the comment, but do it for 
 ```bash
 docker exec -ti carshop-server /bin/bash
 ```
+
+### Opening Swagger UI
+Access in your browser the url: http://localhost:8484/carshop/swagger-ui.html#/
