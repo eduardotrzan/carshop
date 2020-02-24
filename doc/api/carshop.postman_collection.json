@@ -321,6 +321,46 @@
 				}
 			],
 			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "service",
+			"item": [
+				{
+					"name": "Valid Calls",
+					"item": [
+						{
+							"name": "Find Services by Appointment Uuid",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/carshop/v1/appointments/{{appointmentUuid}}/services",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"carshop",
+										"v1",
+										"appointments",
+										"{{appointmentUuid}}",
+										"services"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Invalid Calls",
+					"item": [],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
 		}
 	],
 	"protocolProfileBehavior": {}

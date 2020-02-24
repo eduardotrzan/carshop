@@ -14,6 +14,7 @@ import com.carshop.dto.request.AppointmentCreateDto;
 import com.carshop.dto.response.AppointmentDto;
 import com.carshop.dto.response.CarDto;
 import com.carshop.dto.response.GarageDto;
+import com.carshop.service.validation.InternalServerException;
 
 @RequiredArgsConstructor
 @Component
@@ -34,9 +35,9 @@ public class AppointmentMapper {
 
     private AppointmentDto buildDto(Appointment entity) {
         CarDto car = this.carMapper.toDto(entity.getCar())
-                .orElseThrow();
+                .orElseThrow(() -> new InternalServerException(CarDto.class.getSimpleName()));
         GarageDto garage = this.garageMapper.toDto(entity.getGarage())
-                .orElseThrow();
+                .orElseThrow(() -> new InternalServerException(GarageDto.class.getSimpleName()));
 
         return AppointmentDto.builder()
                 .uuid(entity.getUuid())
