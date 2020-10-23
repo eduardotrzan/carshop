@@ -20,4 +20,8 @@ public class AppointmentAuthEvaluator {
         return this.carMediator.findByUuid(carUuid)
                 .isPresent();
     }
+
+    public boolean canFind(UUID appointmentUuid) {
+        return true;
+    }
 }

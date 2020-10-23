@@ -8,7 +8,7 @@ import com.carshop.service.config.CarshopServiceConfig;
 
 @Configuration
 @ComponentScan(basePackages = "com.carshop.controller")
-@Import({ CarshopServiceConfig.class })
+@Import({ CarshopServiceConfig.class, SwaggerConfig.class })
 public class CarshopControllerConfig {
 
 
